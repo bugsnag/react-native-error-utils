@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Button} from 'react-native';
+import handler from './Another';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -20,16 +21,6 @@ function triggerException() {
   bogusFunction(); // eslint-disable-line no-undef
 }
 
-export class Client {
-  constructor () {
-    const previousHandler = ErrorUtils.getGlobalHandler()
-    ErrorUtils.setGlobalHandler((error, isFatal) => {
-      console.warn("Bugsnag Test App - Entering error handler");
-    })
-  }
-}
-
-const bugsnag = new Client();
 console.warn("Bugsnag Test App - Initialised app");
 
 type Props = {};
@@ -45,6 +36,11 @@ export default class App extends Component<Props> {
       </View>
     );
   }
+
+  // componentDidCatch(error, info) {
+  //   console.warn("Bugsnag Test App - caught error");
+  //     throw error;
+  // }
 }
 
 const styles = StyleSheet.create({
