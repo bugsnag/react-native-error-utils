@@ -24,13 +24,13 @@ export class Client {
   constructor () {
     const previousHandler = ErrorUtils.getGlobalHandler()
     ErrorUtils.setGlobalHandler((error, isFatal) => {
-      console.warn("Bugsnag Test App - Entering error handler");
+      console.error("Bugsnag Test App - Entering error handler");
     })
   }
 }
 
 const bugsnag = new Client();
-console.warn("Bugsnag Test App - Initialised app");
+console.error("Bugsnag Test App - Initialised app");
 
 type Props = {};
 export default class App extends Component<Props> {
